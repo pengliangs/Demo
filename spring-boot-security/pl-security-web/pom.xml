@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>pl-security-web</artifactId>
+    <parent>
+        <artifactId>pl-security</artifactId>
+        <groupId>com.pl</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pl-security</relativePath>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>com.pl</groupId>
+            <artifactId>pl-security-core</artifactId>
+            <version>${pl.security.version}</version>
+        </dependency>
+
+        <!--在集群环境下帮我们做session管理-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.15</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,10 @@
+spring:
+  mail:
+    host: smtp.qq.com #邮箱服务地址
+    username:  #发送人
+    password:  #qq邮箱密码是发送方的授权码
+    properties:
+      # 启动SSL时的配置
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+      mail.smtp.socketFactory.port: 465

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>email</title>
+    <style>
+        body, html {
+            background: #f5f5f5;
+        }
+
+        .email {
+            width: 500px;
+            margin: 100px auto;
+        }
+
+        .email .title {
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .email > .email-item {
+            margin: 10px 0px;
+        }
+
+        .email > .email-item > .label {
+            position: absolute;
+            width: 80px;
+            text-align: right;
+        }
+
+        .email > .email-item > .input-inline {
+            width: 420px;
+            margin-left: 80px;
+        }
+
+        .email > .email-item > .input-inline > input {
+            width: 100%;
+            height: 30px;
+        }
+
+        .email > .email-item > .input-inline > textarea {
+            resize: none;
+            width: 100%;
+            height: 100px;
+        }
+
+        .email > .email-item > .input-inline > .comment {
+            font-size: 12px;
+            padding-top: 5px;
+            color: #777b7e;
+        }
+
+        .email .email-result {
+            width: 420px;
+            margin: 20px 0px 0px 80px;
+            font-size: 16px;
+            color: #777b7e;
+            line-height: 30px;
+        }
+
+        button {
+            width: 69px;
+            height: 26px;
+        }
+    </style>
+    <script th:src="@{/lib/jquery/jquery-1.11.0.min.js}" src="../static/lib/jquery/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+<!-- enctype="multipart/form-data"-->
+<form id="email-form">
+    <div class="email">
+        <div class="title">Sprint Boot Email Demo</div>
+        <div class="email-item">
+            <div class="label">接收人：</div>
+            <div class="input-inline">
+                <input type="text" autocomplete="off" name="to"/>
+                <div class="comment">多个已逗号隔开 如：one@xx.com,two@xx.com</div>
+            </div>
+
+        </div>
+        <div class="email-item">
+            <div class="label"> 标题：</div>
+            <div class="input-inline"><input type="text" autocomplete="off" name="title"/>
+            </div>
+        </div>
+        <div class="email-item">
+            <div class="label">内容：</div>
+            <div class="input-inline"><textarea autocomplete="off"
+                                                name="content"></textarea></div>
+        </div>
+        <div class="email-item">
+            <div class="label">附件：</div>
+            <div class="input-inline"><input type="file" name="file"/></div>
+        </div>
+        <div class="email-item">
+            <div class="input-inline">
+                <button type="button" onclick="sendEmail()">发送</button>
+            </div>
+        </div>
+
+        <div class="email-result"></div>
+    </div>
+</form>
+<script th:inline="javascript">
+    function sendEmail() {
+        var form = $("#email-form")[0];
+        var formData = new FormData(form);
+        $.ajax({
+            url: /*[[@{/send/simpleEmail}]]*/'',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                setResult(res.message);
+                if (res.code == 200) {
+                    form.reset();
+                }
+            },
+            error: function (res) {
+                setResult(res.message);
+            }
+        });
+    }
+
+    function setResult(text) {
+        $(".email-result").text("").text(text);
+    }
+</script>
+</body>
+</html>
