@@ -7,7 +7,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 /**
- * author pengliang  2018-05-27 14:52
+ * @author pengliang  2018-05-27 14:52
  */
 
 @Controller

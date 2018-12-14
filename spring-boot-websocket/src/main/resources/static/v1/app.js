@@ -34,7 +34,8 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/gameInfo", {}, JSON.stringify({'name': $("#name").val()}));
+    console.log($("#name").val());
+    stompClient.send("/app/gameInfo", {}, JSON.stringify({'content': $("#name").val()}));
 }
 
 function showGreeting(message) {

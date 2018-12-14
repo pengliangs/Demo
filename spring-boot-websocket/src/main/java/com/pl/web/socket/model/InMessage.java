@@ -3,7 +3,7 @@ package com.pl.web.socket.model;
 import java.util.Date;
 
 /**
- * author pengliang  2018-05-27 14:49
+ * @author pengliang  2018-05-27 14:49
  */
 public class InMessage {
 

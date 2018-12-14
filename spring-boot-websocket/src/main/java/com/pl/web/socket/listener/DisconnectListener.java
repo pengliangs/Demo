@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 /**
- * author pengliang  2018-06-25 23:04
+ * @author pengliang  2018-06-25 23:04
  */
 @Component
 public class DisconnectListener implements ApplicationListener<SessionDisconnectEvent> {
