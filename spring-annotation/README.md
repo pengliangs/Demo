@@ -21,6 +21,7 @@ request:Web项目中，给每一个http request新建一个Bean实例
 session:Web项目中，给每一个http session新建一个Bean实例<br>
 
 * @ComponentScan
+
 扫描将标注`@Repository`、`@Component`、`@Service`、`@Controller` 扫描组件，添加到容器中
  
 JDK1.8 @Repeatable(ComponentScans.class) 可以重复标记 
@@ -32,6 +33,7 @@ JDK1.8 @Repeatable(ComponentScans.class) 可以重复标记
 懒加载，第一次获取使用的时候创建加载
 
 * @Conditional
+
 Spring4.0中的新特性，在Spring Boot底层大量使用，按照一定的条件进行判断，满足条件给容器中注册bean
 
 使用该注解必须实现 `Condition` 接口然后在 `matches` 方法进行条件过滤
@@ -48,27 +50,35 @@ ImportBeanDefinitionRegistrar接口：registerBeanDefinitions方法
 
 
 * @Value
+
 属性赋值
 
 * @PropertySource
+
 读取外部配置文件 k/v 保存到运行变量中，对应xml：`<context:property-placeholder>`
 
 * @Autowired
+
 自动装配bean实例，默认根据类型装配
 
 *Qualifier
+
 在使用自动装配 @Autowired 时存在多个实例，可以通过 @Qualifier 指定名称查找
 
 * @Primary
+
 在使用自动装配时出现多个实例，可以通过@Primary标记首选bean
 
 * @Resource
+
 自动装配bean实例，默认根据名称装配，这个是`JSR250的java规范注解`，不支持 @Primary 的使用
 
 * @Inject
+
 自动装配，`JSR330`java规范注解，使用该注解需要导入额外的inject依赖
 
 * @Profile
+
 在实际开发中往往会有很多套环境 如 开发/测试/体验/线上 每个环境对应的配置都有不同，这个时候就可以使用
 `@Profile`来实现多环境下的切换
 
@@ -169,17 +179,21 @@ Bean创建 -> 初始化 -> 销毁
 可操作`初始化`、`销毁`两个周期Spring提供如下方式触发生命周期：
 
 * 方法1：
+
 通过 `@Bean` 或 `<bean>` 指定 init-method/destroy-method  (初始化/销毁)
 
 * 方法2：
+
 实现 `InitializingBean` 或者 `DisposableBean` (初始化/销毁)
 
 * 方法3：
+
 `@PostConstruct` ：在bean创建完成并且属性赋值完成，来执行初始化方法
 
 `@PreDestory`：在容器销毁bean之前通知我们进行清理工作
 
 * 方法4：
+
 BeanPostProcessor：bean的后置处理器；在bean初始化前后进行处理
 
 postProcessBeforeInitialization(...)：在初始化之前处理（如`init-method`、`InitializingBean`初始化方法之前）
