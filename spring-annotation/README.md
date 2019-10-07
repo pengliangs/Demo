@@ -75,7 +75,7 @@
 
 * @Inject
 
-自动装配，`JSR330`java规范注解，使用该注解需要导入额外的inject依赖
+    自动装配，`JSR330`java规范注解，使用该注解需要导入额外的inject依赖
 
 * @Profile
 
